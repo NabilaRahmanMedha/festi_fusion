@@ -13,7 +13,7 @@ const SearchBar = () => {
         const budget= budgetRef.current.value
         const maxGroupSize= maxGroupSizeRef.current.value
 
-        if(location=='' || budget==''||maxGroupSize==''){
+        if(location==='' || budget===''||maxGroupSize===''){
             return alert("All fields are required!!");
         }
 
