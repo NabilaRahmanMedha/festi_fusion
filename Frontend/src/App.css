@@ -4,10 +4,10 @@
 :root {
   --primary-color: #c97180;
   --secondary-color: #c78a94;
-  --heading-color: #0b2727;
-  --text-color: #6e7074;
+  --heading-color: #ffffff;
+  --text-color: #fdeef9;
   --font-name: "Montserrat", sans-serif;
-  --black:#1a1316;
+  --black:#110c0e;
   --bg:#010103;
   --subtitle-font-name: "Island Moments", cursive;
 }
@@ -25,6 +25,7 @@ body {
 
 section {
   padding: 50px 0px;
+  background: var(--bg);
 }
 
 h1,

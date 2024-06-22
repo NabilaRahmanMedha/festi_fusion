@@ -1,9 +1,12 @@
+
+
 .search__bar{
-    padding: 0.5rem 1rem;
+    padding: 1rem 1rem;
     border-radius: 50px;
-    box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+    box-shadow: rgba(116, 53, 82, 0.15) 0px 48px 100px 0px;
     width: max-content;
     margin-top: 50px;
+    background: var(--black);
 }
 
 .form__group span{
@@ -16,6 +19,7 @@
     font-size: .9rem;
     color: var(--heading-color);
     font-weight: 500;
+    background: var(--black);
 }
 
 .form__group input:focus{
@@ -27,10 +31,10 @@
 }
 
 .form__group-fast{
-    border-right: 2px solid #ddd;
+    border-right: 2px solid var(--black);
 }
 .search__icon i{
-    font-size: 1.6rem;
+    font-size: 1.4rem;
     padding: 0.5rem;
     background: var(--secondary-color);
     color: #fff;
