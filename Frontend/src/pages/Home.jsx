@@ -59,7 +59,7 @@ const Home = () => {
       </Row>
     </Container>
   </section>
-  {/* ============ hero section start =========== */}
+  {/* ============ hero section end =========== */}
 
   <section>
     <Container>
@@ -74,6 +74,22 @@ const Home = () => {
       </Row>
     </Container>
   </section>
+
+  {/* ============features event section start ============*/}
+  <section>
+    <Container>
+      <Row>
+        <Col lg='12' className="mb-5">
+        <Subtitle subtitle={'Explore'}/>
+        <h2 className="featured__event-title">Our Featured Events</h2>
+        </Col>
+      </Row>
+    </Container>
+  </section>
+  
+
+  {/* ============features event section end ============*/}
+
 
   </>
 };
