@@ -11,6 +11,7 @@ import Subtitle from './../shared/Subtitle';
 import SearchBar from '../shared/SearchBar';
 
 import ServiceList from '../services/ServiceList';
+import FeaturedEventList from '../components/Featured-events/FeaturedEventList';
 
 
 
@@ -24,8 +25,8 @@ const Home = () => {
         <Col lg='6'>
         <div className="hero__content">
             <div className="hero__subtitle d-flex align-items-center">
-              <Subtitle subtitle={'Know Before You Go'} />
-              <img src={worldImg} alt=""/>
+              <Subtitle subtitle={"let's Make Memories"} />
+              
             </div>
             <h1>Its time to Celebrate! The best <span
             className="highlight">Event Organizers</span></h1>
@@ -83,6 +84,9 @@ const Home = () => {
         <Subtitle subtitle={'Explore'}/>
         <h2 className="featured__event-title">Our Featured Events</h2>
         </Col>
+
+        <FeaturedEventList />
+
       </Row>
     </Container>
   </section>
