@@ -25,7 +25,7 @@
 }
 
 .nav__item a:hover{
-    color: inherit;
+    color: var(--secondary-color);
 }
 
 .nav__item a.active__link{
