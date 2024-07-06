@@ -25,7 +25,7 @@ const Register = () => {
   const handleClick = async e=>{
     e.preventDefault();
     try {
-      const res = await fetch('http://localhost:4000/api/v1/auth/register',{
+      const res = await fetch('https://festi-fusion-backend.vercel.app/register',{
         method:'post',
         headers:{
           'content-type':'application/json'
