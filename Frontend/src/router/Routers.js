@@ -7,6 +7,7 @@ import EventsDetails from '../pages/EventsDetails';
 import Register from '../pages/Register';
 import SearchResultList from '../pages/SearchResultList';
 import Login from '../pages/Login';
+import ThankYou from '../pages/ThankYou';
 
 
 
@@ -19,6 +20,7 @@ const Routers = () => {
         <Route path='/events/:id' element={<EventsDetails/>}/>
         <Route path='/login' element={<Login/>}/>
         <Route path='/register' element={<Register/>}/>
+        <Route path='/thank-you' element={<ThankYou/>}/>
         <Route path='/events/search' element={<SearchResultList/>}/>
 
     </Routes>
