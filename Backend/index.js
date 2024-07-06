@@ -41,7 +41,7 @@ app.use((req, res, next) => {
 // middleware
 app.use(cors(
     {
-        origin: ["https://festi-fusion.vercel.app/home"],
+        origin: ["https://festi-fusion.vercel.app"],
         method: ["POST","GET"],
         credentials: true
     }
