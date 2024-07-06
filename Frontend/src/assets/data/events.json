@@ -1,10 +1,10 @@
 [
   {
-    "title": "Westminister Bridge",
-    "city": "London",
-    "address": "Somewhere in London",
+    "title": "Reception Wedding",
+    "city": "Intercontinental, Dhaka",
+    "address": "Somewhere",
     "budget": 300,
-    "price": 99,
+    "price": 2000,
     "maxGroupSize": 10,
     "desc": "this is the description",
     "reviews": [],
@@ -13,11 +13,11 @@
     "featured": true
   },
   {
-    "title": "Bali, Indonesia",
-    "city": "Bali",
-    "address": "Somewhere in Indonesia",
+    "title": "Conference",
+    "city": "Intercontinental, Dhaka",
+    "address": "Somewhere",
     "budget": 400,
-    "price": 99,
+    "price": 2000,
     "maxGroupSize": 8,
     "desc": "this is the description",
     "reviews": [],
@@ -26,11 +26,11 @@
     "featured": true
   },
   {
-    "title": "Snowy Mountains, Thailand",
-    "city": "Bangkok",
-    "address": "Somewhere in Thailand",
+    "title": "Birthday Celebration",
+    "city": "KIB, Dhaka",
+    "address": "Somewhere",
     "budget": 500,
-    "price": 99,
+    "price": 990,
     "maxGroupSize": 8,
     "desc": "this is the description",
     "reviews": [],
@@ -39,11 +39,11 @@
     "featured": true
   },
   {
-    "title": "Beautiful Sunrise, Thailand",
-    "city": "Phuket",
-    "address": "Somewhere in Thailand",
+    "title": "Mehndi Night",
+    "city": "KIB, Dhaka",
+    "address": "Somewhere",
     "budget": 500,
-    "price": 99,
+    "price": 1500,
     "maxGroupSize": 8,
     "desc": "this is the description",
     "reviews": [],
@@ -52,11 +52,11 @@
     "featured": true
   },
   {
-    "title": "Nusa Pendia Bali, Indonesia",
-    "city": "Bali",
-    "address": "Somewhere in Indonesia",
+    "title": "Akht Ceremony",
+    "city": "Bdream convention Center",
+    "address": "Somewhere",
     "budget": 500,
-    "price": 99,
+    "price": 2000,
     "maxGroupSize": 8,
     "desc": "this is the description",
     "reviews": [],
@@ -65,11 +65,11 @@
     "featured": true
   },
   {
-    "title": "Cherry Blossoms Spring",
-    "city": "Tokyo",
-    "address": "Somewhere in Japan",
+    "title": "Destination Wedding",
+    "city": "Ananda Park and Resort",
+    "address": "Somewhere",
     "budget": 500,
-    "price": 99,
+    "price": 10000,
     "maxGroupSize": 8,
     "desc": "this is the description",
     "reviews": [],
@@ -78,11 +78,11 @@
     "featured": true
   },
   {
-    "title": "Holmen Lofoten, France",
-    "city": "Paris",
-    "address": "Somewhere in France",
+    "title": "Concert",
+    "city": "ICCB Dhaka",
+    "address": "Somewhere",
     "budget": 500,
-    "price": 99,
+    "price": 7000,
     "maxGroupSize": 8,
     "desc": "this is the description",
     "reviews": [],
@@ -91,16 +91,16 @@
     "featured": true
   },
   {
-    "title": "Snowy Mountains, Thailand",
-    "city": "Bangkok",
-    "address": "Somewhere in Thailand",
+    "title": "Haldi Night",
+    "city": "Intercontinental, Dhakad",
+    "address": "Somewhere",
     "budget": 500,
-    "price": 99,
+    "price": 2000,
     "maxGroupSize": 8,
     "desc": "this is the description",
     "reviews": [],
 
-    "photo": "/tour-images/tour-img03.jpg",
+    "photo": "/tour-images/tour-img01.jpg",
     "featured": true
   },
   {
