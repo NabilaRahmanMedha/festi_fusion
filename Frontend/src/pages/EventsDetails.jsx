@@ -12,7 +12,7 @@ const EventsDetails = () => {
   const { id } = useParams();
 
   const reviewMsgRef = useRef('')
-  const [tourRating, setTourRating]=useState(null)
+  const [eventRating, setEventRating]=useState(null)
 
   // this is static data; later we will call our API and load our data from the database
   const event = eventData.find(event => event.id === id);
@@ -71,7 +71,7 @@ const EventsDetails = () => {
                   <p>{desc}</p>
                 </div>
                 {/* =====================event reviews section ================== */}
-                <div className="tour__reviews mt-4">
+                <div className="event__reviews mt-4">
                   <h4>Reviews({reviews?.length} reviews)</h4>
 
                   <Form onSubmit={submitHandler}>
