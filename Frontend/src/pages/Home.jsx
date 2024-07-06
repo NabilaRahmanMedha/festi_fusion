@@ -156,7 +156,7 @@ const Home = () => {
 
 {/* ============gallery section end============*/}
 
-{/* ============testimonial section start============*/}
+{/* ============testimonial section start============
 
     <section>
       <Container>
@@ -173,7 +173,7 @@ const Home = () => {
     </section>
 
 {/* ============testimonial section end============*/}
-<Newsletter/>
+{/*<Newsletter/>*/}
   </>
 };
 
