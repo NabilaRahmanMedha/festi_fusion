@@ -11,15 +11,10 @@ import authRoute from './routes/auth.js';
 import reviewRoute from './routes/reviews.js';
 import bookingRoute from './routes/bookings.js';
 
-
-
 dotenv.config()
 const app = express()
 const port = process.env.PORT || 8000
-const  corsOptions = {
-    origin: true,
-    Credentials:true
-}
+
 
 //database connection
 mongoose.set("strictQuery", false);
@@ -36,9 +31,14 @@ const connect = async()=>{
     }
 }
 
-
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
+    res.header('Access-Control-Allow-Credentials', 'true');
+    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
+    next();
+});
 // middleware
-app.use(cors(corsOptions));
 app.use(cookieParser());
 app.use(express.json());
 app.use("/api/v1/auth", authRoute);
