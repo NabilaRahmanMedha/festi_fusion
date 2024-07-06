@@ -39,6 +39,13 @@ app.use((req, res, next) => {
     next();
 });
 // middleware
+app.use(cors(
+    {
+        origin: ["https://festi-fusion.vercel.app/home"],
+        method: ["POST","GET"],
+        credentials: true
+    }
+));
 app.use(cookieParser());
 app.use(express.json());
 app.use("/api/v1/auth", authRoute);
@@ -46,6 +53,8 @@ app.use("/api/v1/events", eventRoute);
 app.use("/api/v1/users", userRoute);
 app.use("/api/v1/review", reviewRoute);
 app.use("/api/v1/booking", bookingRoute);
+
+mongoose.connect('mongodb+srv://rahmannabilamedha:Abc123456@cluster0.u7e5wha.mongodb.net/events_booking?');
 
 
 app.listen(port, ()=>{
