@@ -15,7 +15,7 @@ const eventSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    distance: {
+    budget: {
       type: Number,
       required: true,
     },
