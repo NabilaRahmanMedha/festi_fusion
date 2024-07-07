@@ -25,7 +25,7 @@ const Register = () => {
   const handleClick = async e=>{
     e.preventDefault();
     try {
-      const res = await fetch('http://localhost:4000/api/v1/auth/register',{
+      const res = await fetch('https://festi-fusion-backend.vercel.app/api/v1/auth/register',{
         method:'post',
         headers:{
           'content-type':'application/json'
@@ -60,7 +60,7 @@ const Register = () => {
 
               <Form onSubmit={handleClick}>
               <FormGroup>
-                  <input type="text" placeholder="Username" required id="username" 
+                  <input type="text" placeholder="Username" required id="userName" 
                   onChange={handleChange}/>
                 </FormGroup>
 

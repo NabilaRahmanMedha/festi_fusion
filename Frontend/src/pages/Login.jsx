@@ -26,7 +26,7 @@ const Login = () => {
     e.preventDefault();
     dispatch({type:'LOGIN_START'})
     try {
-      const res = await fetch('http://localhost:4000/api/v1/auth/login',{
+      const res = await fetch('https://festi-fusion-backend.vercel.app/api/v1/auth/login',{
         method:'post',
         headers:{
           'content-type':'application/json'
