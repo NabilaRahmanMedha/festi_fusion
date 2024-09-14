@@ -1,9 +1,12 @@
+/* Header Styling */
 .header {
     width: 100%;
-    height: 100px;
+    height: 100px; /* Ensure the height of the header remains fixed */
     line-height: 80px;
     align-items: center;
     background: var(--bg);
+    position: relative;
+    z-index: 999; /* Keep header above other elements */
 }
 
 .logo img {
@@ -22,7 +25,7 @@
     margin-bottom: 0;
     display: flex;
     align-items: center;
-    gap: 2rem; /* Adjust the gap as needed */
+    gap: 2rem;
 }
 
 .nav__item {
@@ -47,9 +50,10 @@
 .mobile__menu {
     font-size: 1.3rem;
     color: var(--heading-color);
-    display: none;
+    cursor: pointer;
 }
 
+/* Sticky Header */
 .sticky_header {
     width: 100%;
     height: 80px;
@@ -65,7 +69,7 @@
 .nav__right {
     display: flex;
     align-items: center;
-    gap: 2rem; /* Adjust the gap as needed */
+    gap: 2rem;
 }
 
 .nav__btns .btn a {
@@ -86,4 +90,68 @@
 
 .nav__btns .primary__btn a:hover {
     color: black;
+}
+
+/* Sidebar Styles */
+.sidebar {
+    position: fixed;
+    top: 0;
+    right: -250px;
+    width: 250px;
+    height: 100vh;
+    background: var(--bg);
+    box-shadow: -3px 0 8px -3px rgba(0, 0, 0, 0.1);
+    transition: right 0.3s ease;
+    z-index: 1000;
+    padding: 1rem;
+}
+
+.sidebar.active {
+    right: 0;
+}
+
+.sidebar .close-btn {
+    font-size: 1.5rem;
+    border: none;
+    background: none;
+    color: var(--heading-color);
+    cursor: pointer;
+    margin-bottom: 1rem;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    margin: 1rem 0;
+}
+
+.sidebar ul li a {
+    color: var(--heading-color);
+    text-decoration: none;
+    font-size: 1.2rem;
+}
+
+.sidebar ul li a:hover {
+    color: var(--secondary-color);
+}
+
+.sidebar-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease;
+    z-index: 999;
+}
+
+.sidebar-overlay.active {
+    opacity: 1;
+    visibility: visible;
 }
