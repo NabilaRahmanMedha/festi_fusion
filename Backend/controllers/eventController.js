@@ -1,12 +1,12 @@
 import Event from "../models/Event.js";
 
-
 //create new event
 export const createEvent = async(req, res)=>{
     const newEvent = new Event(req.body)
 
     try{
         const savedEvent = await newEvent.save();
+
         res
             .status(200)
             .json({
@@ -16,10 +16,13 @@ export const createEvent = async(req, res)=>{
             });
     } catch(err){
         res
-            .status(500)
-            .json({success:false, message:"failed to create. try again"})
+        .status(500)
+        .json({
+            success:false, 
+            message:"failed to create. try again"
+        });
     }
-}
+};   
 
 //update event
 export const updateEvent = async (req , res) => {
@@ -50,7 +53,6 @@ export const updateEvent = async (req , res) => {
 export const deleteEvent = async (req , res) => {
     const id = req.params.id
     try{
-        
         await Event.findByIdAndDelete(id);
 
         res.status(200)
@@ -68,12 +70,13 @@ export const deleteEvent = async (req , res) => {
     }
 };
 
-//getSingleTour event
+//getSingle event
 export const getSingleEvent = async (req , res) => {
     const id = req.params.id
     try{
         
-        const event = await Event.findById(id).populate('reviews');
+        const event = await Event.findById(id)
+        .populate("reviews");
 
         res.status(200)
             .json({
@@ -98,7 +101,7 @@ export const getAllEvent = async (req , res) => {
 
     try{
         const events = await Event.find({})
-        .populate('reviews')
+        .populate("reviews")
         .skip(page * 8)
         .limit(8);
 
@@ -126,7 +129,11 @@ export const getEventBySearch = async(req,res)=>{
 
     try{
 
-        const events = await Event.find({city,budget:{$gte:budget},maxGroupSize:{$gte:maxGroupSize}}).populate('reviews');
+        const events = await Event
+        .find({city,
+            budget:{$gte:budget},
+            maxGroupSize:{$gte:maxGroupSize}})
+            .populate("reviews");
         res.status(200).json({
             success:true,
             message:"successful",
@@ -147,7 +154,7 @@ export const getFeaturedEvent = async (req , res) => {
 
     try{
         const events = await Event.find({featured:true})
-        .populate('reviews')
+        .populate("reviews")
         .limit(8);
 
         res.status(200).json({

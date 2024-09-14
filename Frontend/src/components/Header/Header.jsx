@@ -1,13 +1,15 @@
-import React, { useRef, useContext, useState } from 'react';
-import { Container, Row, Button } from 'reactstrap';
-import { NavLink, Link, useNavigate } from 'react-router-dom';
+
+import React, {useRef, useEffect, useContext} from 'react';
+import {Container, Row, Button} from 'reactstrap';
+import { NavLink, Link, useNavigate} from 'react-router-dom';
 
 import logo from '../../assets/images/logo.png';
-import './header.css';
+import "./header.css";
 
-import { AuthContext } from '../../context/AuthContext';
+import {AuthContext} from '../../context/AuthContext';
 
-const nav__links = [
+const nav__links=[
+
   {
     path: '/home',
     display: 'Home',
@@ -25,31 +27,25 @@ const nav__links = [
 const Header = () => {
   const headerRef = useRef(null);
   const navigate = useNavigate();
-  const { user, dispatch } = useContext(AuthContext);
 
-  const [sidebar, setSidebar] = useState(false); // Sidebar state
+  const {user, dispatch} = useContext(AuthContext);
 
-  const toggleSidebar = () => {
-    setSidebar(!sidebar); // Toggles the sidebar
-  };
-
-  const logout = () => {
-    dispatch({ type: 'LOGOUT' });
+  const logout = () =>{
+    dispatch({type:'LOGOUT'});
     navigate('/');
-  };
+  }
 
-  return (
-    <>
-      <header className='header'>
-        <Container>
-          <Row>
-            <div
-              className='nav__wrapper d-flex align-items-center justify-content-between'
-            >
-              {/* Logo */}
-              <div className='logo'>
-                <img src={logo} alt='Logo' />
-              </div>
+  return <header className='header'>
+    <Container>
+      <Row>
+        <div className="nav__wrapper d-flex align-items-center 
+        justify-content-between">
+          {/* ========== logo ========= */}
+          <div className="logo">
+            <img src={logo} alt="" />
+          </div>
+          {/* ========== logo end ========= */}
+
 
               {/* Menu */}
               <div className='navigation'>
@@ -91,11 +87,28 @@ const Header = () => {
                   )}
                 </div>
 
-                {/* Mobile Menu Icon */}
-                <span className='mobile__menu' onClick={toggleSidebar}>
-                  <i className='ri-menu-line'></i>
-                </span>
-              </div>
+
+          <div className="nav__right d-flex align-items-center gap-4 ">
+            <div className="nav__btns d-flex align-items-center gap-4 ">
+
+              {user?(
+                <>
+                  <h5 className="mb-0">{user.username}</h5>
+                  <Button className="btn btn-dark" onClick={logout}>
+                    Logout
+                  </Button>
+                </>
+              ):(
+                <>
+                  <Button className="btn secondary__btn">
+                    <Link to="/login">Login</Link>
+                  </Button>
+                  <Button className="btn primary__btn">
+                    <Link to="/register">Register</Link>
+                  </Button>
+                </>
+              )}
+
             </div>
           </Row>
         </Container>
