@@ -111,3 +111,32 @@
     margin-top: 1rem;
     
 }
+
+@media only screen and (max-width: 992px) {
+    .hero__content h1 {
+        font-size: 2.7rem;
+    }
+
+    .hero__img-box {
+        display: none;
+    }
+
+    .hero__video-box {
+        display: block;
+    }
+
+    .services__title {
+        font-style: 2rem;
+    }
+}
+
+@media only screen and (max-width: 576px) {
+    .hero__content h1 {
+        font-size: 1.8rem;
+    }
+
+    .services__title {
+        font-style: 1.5rem;
+    }
+
+}
