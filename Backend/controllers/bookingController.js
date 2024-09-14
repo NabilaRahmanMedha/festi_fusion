@@ -1,4 +1,8 @@
+
 import Booking from "../models/Booking.js";
+
+//create booking
+
 export const createBooking = async(req,res)=>{
     const newBooking = new Booking(req.body)
     try {
@@ -11,10 +15,12 @@ export const createBooking = async(req,res)=>{
     } catch (err) {
         res.status(500).json({
             success:false,
-            message:'Failed to book event',
+            message:'Server Error',
         })
     }
 };
+
+//get single booking
 
 export const getBooking = async(req,res)=>{
     const id = req.params.id
@@ -32,6 +38,8 @@ export const getBooking = async(req,res)=>{
         })
     }
 };
+
+//get all booking 
 
 export const getAllBooking = async(req,res)=>{
     

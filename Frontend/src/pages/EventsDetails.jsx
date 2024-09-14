@@ -1,21 +1,24 @@
-import React,{useRef, useState} from 'react';
+import React,{useEffect, useRef, useState, useContext} from 'react';
 import '../styles/event-details.css';
-import { Container, Row, Col, Form, ListGroup } from 'reactstrap';
+import { Container, Row, Col, Form, ListGroup, ListGroupItemHeading } from 'reactstrap';
 import { useParams } from 'react-router-dom';
-import eventData from '../assets/data/events';
 import calculateAvgRating from '../utils/avgRating';
 import avatar from '../assets/images/avatar.jpg';
 import Booking from '../components/Booking/Booking';
+import useFetch from '../hooks/useFetch';
+import {BASE_URL} from '../utils/config';
+
+import {AuthContext} from '../context/AuthContext';
 
 
 const EventsDetails = () => {
   const { id } = useParams();
 
-  const reviewMsgRef = useRef('')
-  const [eventRating, setEventRating]=useState(null)
+  const reviewMsgRef = useRef('');
+  const [eventRating, setEventRating]=useState(null);
+  const {user} = useContext(AuthContext);
 
-  // this is static data; later we will call our API and load our data from the database
-  const event = eventData.find(event => event.id === id);
+  const {data:event, loading, error}=useFetch(`${BASE_URL}events/${id}`);
 
   // destructure properties from event object
   const { photo, title, desc, price, address, reviews, city, budget, maxGroupSize } = event;
@@ -27,19 +30,61 @@ const EventsDetails = () => {
 
   //submit request to the server
 
-  const submitHandler =e=>{
+  const submitHandler = async e=>{
+    e.preventDefault();
     const reviewText =reviewMsgRef.current.value;
 
     
+    try{
+      if(!user || user === undefined || user === null){
+        alert('Please Sign-In');
+      }  
 
-    //later will call our api
-  }
+      const reviewObj = {
+        username: user?.username,
+        reviewText,
+        rating:eventRating,
+      };
+
+      const res = await fetch(`${BASE_URL}review/${id}`,{
+        method: 'post',
+        headers: {
+          'content-type':'application/json',
+        },
+        credentials: 'include',
+        body:JSON.stringify(reviewObj),
+      });
+
+      const result = await res.json();
+
+      if(!res.ok){
+        return alert(result.message);
+      }
+
+      alert(result.message);
+      
+    } catch(err){
+      alert(err.message);
+    }
+  
+  };
+
+  useEffect(()=>{
+    window.scrollTo(0,0);
+  },[event]);
 
   return (
     <>
       <section>
         <Container>
-          <Row>
+          {
+            loading&&<h4 className="text-center pt-5">Loading . . .</h4>
+          }
+          {
+            error&&<h4 className="text-center pt-5">{error}</h4>
+          }
+          {
+            !loading&&!error&&<Row>
             <Col lg="8">
               <div className="event__content">
                 <img src={photo} alt='' />
@@ -110,21 +155,20 @@ const EventsDetails = () => {
                           <div className="w-100">
                             <div className="d-flex align-items-center justify-content-between">
                               <div>
-                                <h5>Shila</h5>
+                                <h5>{review.username}</h5>
                                 <p>
                                   {
-                                    new Date("01-18-2023").toLocaleDateString(
+                                    new Date(review.createdAt).toLocaleDateString(
                                       "en-US",
                                       options
                                     )}
                                 </p>
                               </div>
                               <span className="d-flex align-items-center">
-                                5<i class="ri-star-s-fill"></i>
+                                {review.rating}<i class="ri-star-s-fill"></i>
                               </span>
                             </div>
-
-                            <h6>Amazing event</h6>
+                            <h6>{review.reviewText}</h6>
                           </div>
                         </div>
                       ))
@@ -139,6 +183,7 @@ const EventsDetails = () => {
               <Booking event={event} avgRating={avgRating}/>
             </Col>
           </Row>
+          }
         </Container>
       </section>
       
