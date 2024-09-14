@@ -7,12 +7,13 @@ import'../styles/login.css'
 import registerImg from '../assets/images/register.png'
 import userIcon from '../assets/images/user.png'
 import { AuthContext } from '../context/AuthContext';
-const Register = () => {
+import { BASE_URL } from '../utils/config';
 
+const Register = () => {
   const [credentials, setCredentials]=useState({
     userName:undefined,
     email:undefined,
-    password: undefined
+    password: undefined,
   });
 
   const {dispatch} = useContext(AuthContext);
@@ -25,21 +26,24 @@ const Register = () => {
   const handleClick = async e=>{
     e.preventDefault();
     try {
-      const res = await fetch('https://festi-fusion-backend.vercel.app/api/v1/auth/register',{
-        method:'post',
+      const res = await fetch(`${BASE_URL}auth/register`,{
+        method:"post",
         headers:{
-          'content-type':'application/json'
+          "content-type":"application/json",
         },
-        body: JSON.stringify(credentials)
-      })
-      const result = await res.json()
-      if(!res.ok)alert(result.message)
+        body:JSON.stringify(credentials),
+      });
+      const result = await res.json();
+
+      if(!res.ok) {alert(result.message);}
+
       dispatch({type:'REGISTER_SUCCESS'});
-      navigate('/login')
+      navigate('/login');
+        
     } catch (err) {
       alert(err.message);
     }
-  }
+  };
 
 
   return (

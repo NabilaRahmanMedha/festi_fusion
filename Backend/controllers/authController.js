@@ -1,17 +1,19 @@
 
 import User from "../models/User.js";
-import bcrypt from 'bcryptjs'
-import jwt from 'jsonwebtoken'
+import bcrypt from 'bcryptjs';
+import jwt from 'jsonwebtoken';
+import { MongoCryptKMSRequestNetworkTimeoutError } from "mongodb";
 //user registration
 export const register = async (req,res) => {
-
-    //hashing password
-    const salt = bcrypt.genSaltSync(10);
-    const hash = bcrypt.hashSync(req.body.password,salt);
+    
     try {
+
+        //hashing password
+        const salt = bcrypt.genSaltSync(10);
+        const hash = bcrypt.hashSync(req.body.password,salt);
         
         const newUser = new User({
-            username: req.body.username,
+            username: req.body.userName,
             email:req.body.email,
             password:hash,
             //password:req.body.password,
@@ -44,27 +46,33 @@ export const login = async (req,res) => {
                 message: 'User not Found'
             })
         }
-        const checkCorrectPassword = await bcrypt.compare(req.body.password,user.password)
+
+        const checkCorrectPassword = await bcrypt.compare(
+            req.body.password,user.password)
+
         if(!checkCorrectPassword){
             return res.status(401).json({
                 success:false,
                 message: 'Incorrectr email or Password'
             })
         }
+
         const { password, role, ...rest} = user._doc
+
         const token = jwt.sign(
             {id:user._id,role: user.role},
             process.env.JWT_SECRET_KEY,
             {expiresIn: "15d"}
         );
 
-        res.cookie("accessToken",token,{
+        res.cookie('accessToken', token, {
             httpOnly: true,
-            expires: token.expiresIn
-        }).status(200).json({
+            expires: new Date(Date.now() + 15 * 24 * 60 * 60 * 1000)
+        })
+        .status(200)
+        .json({     
             token,
-            data:{...
-                rest},
+            data: {...rest},
             role,
         });
         

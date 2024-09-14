@@ -1,24 +1,28 @@
 import React,{useState, useEffect} from 'react';
 import { CommonSection } from '../shared/CommonSection';
 
-import '../styles/event.css'
-import eventData from './../assets/data/events'
-import EventCard from './../shared/EventCard'
-import SearchBar from './../shared/SearchBar'
-import Newsletter from './../shared/Newsletter'
-
+import '../styles/event.css';
+import EventCard from './../shared/EventCard';
+import SearchBar from './../shared/SearchBar';
 import { Container,Row ,Col} from 'reactstrap';
 
+import useFetch from '../hooks/useFetch';
+import { BASE_URL } from '../utils/config';
 
 const Events = () => {
   
-  const [pageCount,setPageCount]=useState(0)
-  const [page,setPage] = useState(0)
+  const [pageCount,setPageCount] = useState(0);
+  const [page,setPage] = useState(0);
+
+  const {data:events, loading, error} = useFetch(`${BASE_URL}events?page=${page}`);
+  const {data:eventCount} = useFetch(`${BASE_URL}events/search/getEventCount`);
+
 
   useEffect(()=>{
-    const pages=Math.ceil(5/4) //later we will use backend data count
+    const pages=Math.ceil(eventCount/8);
     setPageCount(pages);
-  },[page]);
+    window.scrollTo(0,0);
+  },[page, eventCount, events]);
 
   return (<>
     <CommonSection title={"All Events"}/>
@@ -32,10 +36,17 @@ const Events = () => {
 
     <section className="pt-0">
       <Container>
-        <Row>
+        {
+          loading&&<h4 className="text-center pt-5">Loading . . .</h4>
+        }
+        {
+          error&&<h4 className="text-center pt-5">{error}</h4>
+        }
+        {
+          !loading&&!error&&<Row>
           {
-            eventData?.map(event=> 
-            <Col lg="3" className="mb-4" key={event.id}>
+            events?.map(event=> 
+            <Col lg="3" className="mb-4" key={event._id}>
               <EventCard event={event}/>
             </Col>)
           }
@@ -52,6 +63,7 @@ const Events = () => {
           </div>
           </Col>
         </Row>
+        }
       </Container>
     </section>
      
