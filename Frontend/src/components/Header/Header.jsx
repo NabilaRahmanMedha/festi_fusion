@@ -1,29 +1,41 @@
-import React, { useState } from 'react';
+import React, { useRef, useContext, useState } from 'react';
 import { Container, Row, Button } from 'reactstrap';
-import { NavLink, Link } from 'react-router-dom';
+import { NavLink, Link, useNavigate } from 'react-router-dom';
+
 import logo from '../../assets/images/logo.png';
-import "./header.css";
+import './header.css';
+
+import { AuthContext } from '../../context/AuthContext';
 
 const nav__links = [
   {
     path: '/home',
-    display: 'Home'
+    display: 'Home',
   },
   {
     path: '/about',
-    display: 'About'
+    display: 'About',
   },
   {
     path: '/events',
-    display: 'Events'
+    display: 'Events',
   },
 ];
 
 const Header = () => {
-  const [sidebar, setSidebar] = useState(false);
+  const headerRef = useRef(null);
+  const navigate = useNavigate();
+  const { user, dispatch } = useContext(AuthContext);
+
+  const [sidebar, setSidebar] = useState(false); // Sidebar state
 
   const toggleSidebar = () => {
-    setSidebar(!sidebar);
+    setSidebar(!sidebar); // Toggles the sidebar
+  };
+
+  const logout = () => {
+    dispatch({ type: 'LOGOUT' });
+    navigate('/');
   };
 
   return (
@@ -31,22 +43,23 @@ const Header = () => {
       <header className='header'>
         <Container>
           <Row>
-            <div className="nav__wrapper d-flex align-items-center justify-content-between">
-              {/* ========== logo ========= */}
-              <div className="logo">
-                <img src={logo} alt="Logo" />
+            <div
+              className='nav__wrapper d-flex align-items-center justify-content-between'
+            >
+              {/* Logo */}
+              <div className='logo'>
+                <img src={logo} alt='Logo' />
               </div>
-              {/* ========== logo end ========= */}
 
-              {/* ========== menu start ========= */}
-              <div className="navigation">
-                <ul className="menu d-flex align-items-center gap-5">
+              {/* Menu */}
+              <div className='navigation'>
+                <ul className='menu d-flex align-items-center gap-5'>
                   {nav__links.map((item, index) => (
-                    <li className="nav__item" key={index}>
+                    <li className='nav__item' key={index}>
                       <NavLink
                         to={item.path}
-                        className={navClass =>
-                          navClass.isActive ? "active__link" : ""
+                        className={(navClass) =>
+                          navClass.isActive ? 'active__link' : ''
                         }
                       >
                         {item.display}
@@ -55,16 +68,32 @@ const Header = () => {
                   ))}
                 </ul>
               </div>
-              {/* ========== menu end ========= */}
 
-              <div className="nav__right d-flex align-items-center gap-4">
-                <div className="nav__btns d-flex align-items-center gap-4">
-                  <Button className="btn secondary__btn"><Link to='/login'>Login</Link></Button>
-                  <Button className="btn primary__btn"><Link to='/register'>Register</Link></Button>
+              {/* Buttons and Mobile Menu */}
+              <div className='nav__right d-flex align-items-center gap-4'>
+                <div className='nav__btns d-flex align-items-center gap-4'>
+                  {user ? (
+                    <>
+                      <h5 className='mb-0'>{user.username}</h5>
+                      <Button className='btn btn-dark' onClick={logout}>
+                        Logout
+                      </Button>
+                    </>
+                  ) : (
+                    <>
+                      <Button className='btn secondary__btn'>
+                        <Link to='/login'>Login</Link>
+                      </Button>
+                      <Button className='btn primary__btn'>
+                        <Link to='/register'>Register</Link>
+                      </Button>
+                    </>
+                  )}
                 </div>
 
-                <span className="mobile__menu" onClick={toggleSidebar}>
-                  <i className="ri-menu-line"></i>
+                {/* Mobile Menu Icon */}
+                <span className='mobile__menu' onClick={toggleSidebar}>
+                  <i className='ri-menu-line'></i>
                 </span>
               </div>
             </div>
@@ -72,9 +101,11 @@ const Header = () => {
         </Container>
       </header>
 
-      {/* ========== Sidebar ========= */}
+      {/* Sidebar */}
       <div className={`sidebar ${sidebar ? 'active' : ''}`}>
-        <button className="close-btn" onClick={toggleSidebar}>×</button>
+        <button className='close-btn' onClick={toggleSidebar}>
+          &times;
+        </button>
         <ul>
           {nav__links.map((item, index) => (
             <li key={index}>
@@ -85,7 +116,12 @@ const Header = () => {
           ))}
         </ul>
       </div>
-      <div className={`sidebar-overlay ${sidebar ? 'active' : ''}`} onClick={toggleSidebar}></div>
+
+      {/* Sidebar Overlay */}
+      <div
+        className={`sidebar-overlay ${sidebar ? 'active' : ''}`}
+        onClick={toggleSidebar}
+      ></div>
     </>
   );
 };
