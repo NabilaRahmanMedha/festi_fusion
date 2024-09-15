@@ -28,7 +28,7 @@ export const register = async (req,res) => {
         })
 
     } catch (error) {
-        console.log(error);
+        console.error(error);
         res.status(500).json({
             success:false,
             message:'Failed to create.Try again'
@@ -79,7 +79,7 @@ export const login = async (req,res) => {
         
         
     } catch (err) {
-        console.log(err);
+        console.error(err);
         res.status(500).json({
             success:false,
             message: "Failed to Login"
