@@ -46,7 +46,9 @@ app.use("/api/v1/users", userRoute);
 app.use("/api/v1/review", reviewRoute);
 app.use("/api/v1/booking", bookingRoute);
 
-
+app.get('/',(req,res)=>{
+    res.send("Hello world")
+})
 app.listen(port, ()=>{
     connect();
     console.log("server listening on port", port);
