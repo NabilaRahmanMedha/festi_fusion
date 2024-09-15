@@ -15,6 +15,7 @@ export const createEvent = async(req, res)=>{
                 data:savedEvent,
             });
     } catch(err){
+        console.log(err);
         res
         .status(500)
         .json({

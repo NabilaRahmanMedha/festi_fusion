@@ -103,6 +103,7 @@ export const getAllUser = async (req , res) => {
             data: users
         })
     } catch(err){
+        console.log(err);
         res.status(404)
             .json({
                 success:false, 
