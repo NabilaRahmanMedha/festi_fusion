@@ -20,7 +20,7 @@ const nav__links=[
     path: '/events',
     display: 'Events'
   },
-  
+
 ]
 
 const Header = () => {
