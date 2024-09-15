@@ -13,7 +13,7 @@ export const createBooking = async(req,res)=>{
             data:savedBooking
         })
     } catch (err) {
-        console.log(err);
+        console.error(err);
         res.status(500).json({
             success:false,
             message:'Server Error',
@@ -33,7 +33,7 @@ export const getBooking = async(req,res)=>{
             data:book
         })
     } catch (error) {
-        console.log(error);
+        console.error(error);
         res.status(404).json({
             success:false,
             message:'not found',
@@ -53,7 +53,7 @@ export const getAllBooking = async(req,res)=>{
             data:books
         })
     } catch (error) {
-        console.log(error);
+        console.error(error);
         res.status(500).json({
             success:false,
             message:'Internal Server Error',
