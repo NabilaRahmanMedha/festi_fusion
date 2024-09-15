@@ -1,4 +1,4 @@
-import React, { useRef, useContext, useState } from 'react';
+import React, { useRef, useContext, useState, useEffect } from 'react';
 import { Container, Row, Button } from 'reactstrap';
 import { NavLink, Link, useNavigate } from 'react-router-dom';
 
@@ -28,10 +28,10 @@ const Header = () => {
   const navigate = useNavigate();
   const { user, dispatch } = useContext(AuthContext);
 
-  const [sidebar, setSidebar] = useState(false); // Sidebar state
+  const [sidebar, setSidebar] = useState(false);
 
   const toggleSidebar = () => {
-    setSidebar(!sidebar); // Toggles the sidebar
+    setSidebar(!sidebar);
   };
 
   const logout = () => {
@@ -39,9 +39,28 @@ const Header = () => {
     navigate('/');
   };
 
+  // Add sticky header logic
+  useEffect(() => {
+    const handleScroll = () => {
+      if (headerRef.current) {
+        if (window.scrollY > 80) {
+          headerRef.current.classList.add('sticky_header');
+        } else {
+          headerRef.current.classList.remove('sticky_header');
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   return (
     <>
-      <header className='header'>
+      <header className='header' ref={headerRef}>
         <Container>
           <Row>
             <div className='nav__wrapper d-flex align-items-center justify-content-between'>
@@ -74,8 +93,8 @@ const Header = () => {
                 <div className='nav__btns d-flex align-items-center gap-4'>
                   {user ? (
                     <>
-                      <h5 className='mb-0'>{user.username}</h5>
-                      <Button className='btn btn-dark' onClick={logout}>
+                      <h5 className='mb-0 user-name'>{user.username}</h5>
+                      <Button className='btn primary__btn' onClick={logout}>
                         Logout
                       </Button>
                     </>
