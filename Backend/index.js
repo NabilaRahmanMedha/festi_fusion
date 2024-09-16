@@ -36,6 +36,8 @@ const connect = async()=>{
     }
 };
 
+connect();
+
 // middleware
 app.use(express.json());
 app.use(cors(corsOptions));
@@ -50,6 +52,6 @@ app.get('/',(req,res)=>{
     res.send("Hello world")
 })
 app.listen(port, ()=>{
-    connect();
+
     console.log("server listening on port", port);
 });
