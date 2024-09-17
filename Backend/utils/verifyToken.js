@@ -44,7 +44,7 @@ export const verifyAdmin = (req,res,next)=>{
         }else {
             return res.status(401).json({
                 success: false,
-                message: "Youre not authorized"
+                message: "You're not authorized"
             });
         }
     });

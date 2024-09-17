@@ -44,7 +44,15 @@ const Login = () => {
       console.log(result.data);
 
       dispatch({type:'LOGIN_SUCCESS',payload:result.data});
-      navigate('/');
+
+      if (result.data.username === 'admin') {
+        console.log('Navigating to /admin');
+
+        navigate('/admin'); // Redirect admin to the admin panel
+      } else {
+        console.log('Navigating to /home');
+        navigate('/home'); // Redirect users to the home page
+      }
       
     } catch (err) {
       dispatch({type:'LOGIN_FAILURE',payload:err.message});
