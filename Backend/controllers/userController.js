@@ -71,7 +71,7 @@ export const deleteUser = async (req , res) => {
     }
 };
 
-//getSingleTour User
+//getSingle User
 export const getSingleUser = async (req , res) => {
     const id = req.params.id
     try{

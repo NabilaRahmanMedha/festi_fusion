@@ -5,11 +5,14 @@ import mongoose from 'mongoose';
 import cors from 'cors'; 
 import cookieParser from 'cookie-parser';
 
+import createAdmin from './utils/createAdmin.js';
+
 import eventRoute from './routes/events.js';
 import userRoute from './routes/users.js';
 import authRoute from './routes/auth.js';
 import reviewRoute from './routes/reviews.js';
 import bookingRoute from './routes/bookings.js';
+import adminRoute from './routes/admin.js';
 
 dotenv.config();
 const app = express();
@@ -37,6 +40,7 @@ const connect = async()=>{
 };
 
 connect();
+createAdmin();
 
 // middleware
 app.use(express.json());
@@ -47,6 +51,7 @@ app.use("/api/v1/events", eventRoute);
 app.use("/api/v1/users", userRoute);
 app.use("/api/v1/review", reviewRoute);
 app.use("/api/v1/booking", bookingRoute);
+app.use("/api/v1/admin", adminRoute);
 
 app.get('/',(req,res)=>{
     res.send("Hello world")
