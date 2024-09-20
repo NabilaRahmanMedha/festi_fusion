@@ -9,7 +9,7 @@ const EventManagement = () => {
   // Fetch events from the server
   const fetchEvents = async () => {
     try {
-      const response = await axios.get('http://localhost:4000/api/v1/booking');
+      const response = await axios.get('https://festi-fusion-backend.vercel.app/api/v1/booking');
       setEvents(response.data.data);
     } catch (error) {
       console.error('Error fetching events:', error);
@@ -20,7 +20,7 @@ const EventManagement = () => {
   const deleteEvent = async (eventId) => {
     try {
       console.log(`Attempting to delete event with ID: ${eventId}`);
-      await axios.delete(`http://localhost:4000/api/v1/booking/${eventId}`);
+      await axios.delete(`https://festi-fusion-backend.vercel.app/api/v1/booking/${eventId}`);
       console.log(`Event with ID: ${eventId} deleted successfully`);
       
       // Update state after successful deletion
