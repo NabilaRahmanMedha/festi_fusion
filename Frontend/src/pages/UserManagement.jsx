@@ -8,7 +8,7 @@ const UserManagement = () => {
   // Fetch users from the backend
   const fetchUsers = async () => {
     try {
-      const response = await axios.get('http://localhost:4000/api/v1/users', { withCredentials: true });
+      const response = await axios.get('https://festi-fusion-backend.vercel.app/api/v1/users', { withCredentials: true });
       setUsers(response.data.data); 
     } catch (error) {
       console.log(error);
@@ -18,7 +18,7 @@ const UserManagement = () => {
   // Handle user deletion
   const deleteUser = async (userId) => {
     try {
-      await axios.delete(`http://localhost:4000/api/v1/users/${userId}`, { withCredentials: true });
+      await axios.delete(`https://festi-fusion-backend.vercel.app/api/v1/users/${userId}`, { withCredentials: true });
       fetchUsers()
     } catch (error) {
       console.log(error);
