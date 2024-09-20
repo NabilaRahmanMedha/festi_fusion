@@ -14,6 +14,7 @@ const Layout = () => {
     <>
       {isAdminRoute ? (
         <AdminLayout>
+          <Routers />
           <Footer />
         </AdminLayout>
       ) : (

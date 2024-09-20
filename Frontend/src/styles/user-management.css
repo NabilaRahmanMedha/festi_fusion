@@ -1,0 +1,37 @@
+.usermanage {
+    color: var(--primary-color);
+}
+
+.user-card {
+    background-color: rgb(255, 255, 255);
+    border-radius: 8px;
+    padding: 15px;
+    transition: box-shadow 0.3s;
+  }
+  
+  .user-card:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  }
+  
+  .user-username {
+    color: var(--secondary-color);
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
+  .user-detail {
+    color: var(--secondary-color);
+    font-size: 14px;
+    margin-top: 5px;
+  }
+  
+  .container {
+    max-width: 1200px;
+  }
+  
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
