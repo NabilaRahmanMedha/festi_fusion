@@ -60,3 +60,31 @@ export const getAllBooking = async(req,res)=>{
         })
     }
 }
+
+export const deleteBooking= async(req,res)=>{
+    const id=req.params.id
+    try {
+        const booking =await Booking.findByIdAndDelete(id)
+        if(booking){
+            return res.json({
+                success:true,
+                message:'succcessful',
+
+            })
+        }
+        else{
+            return res.json({
+                success:false,
+                message:'false',
+
+            })
+        }
+    } catch (error) {
+        console.log(error)
+        return res.json({
+            success:false,
+            message:'false',
+
+        })
+    }
+}

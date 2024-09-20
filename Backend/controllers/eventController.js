@@ -56,7 +56,7 @@ export const deleteEvent = async (req , res) => {
     const id = req.params.id
     try{
         await Event.findByIdAndDelete(id);
-
+       console.log("deleted")
         res.status(200)
             .json({
                 success:true, 
@@ -64,7 +64,7 @@ export const deleteEvent = async (req , res) => {
             });
 
     } catch(err){
-        console.error(err);
+        console.log(err);
         res.status(500)
             .json({
                 success:false, 

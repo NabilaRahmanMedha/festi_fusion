@@ -1,0 +1,37 @@
+
+.eventsHeader{
+    color: #c97180;
+}
+.event-card {
+    background-color: #000000;
+    border-radius: 8px;
+    transition: box-shadow 0.3s ease;
+  }
+  
+  .event-card:hover {
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  .event-name {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #ffffff;
+    margin-bottom: 1rem;
+  }
+  
+  .event-detail {
+    font-size: 1rem;
+    color: #c298b0;
+  }
+  
+  .text-center {
+    text-align: center;
+  }
+  
+  /* For responsive card margins */
+  @media (max-width: 768px) {
+    .event-card {
+      margin-bottom: 1rem;
+    }
+  }
+  

@@ -14,7 +14,7 @@ router.post("/", verifyAdmin, createEvent);
 router.put("/:id", verifyAdmin, updateEvent);
 
 //delete event
-router.delete("/:id", verifyAdmin, deleteEvent);
+router.delete("/:id", deleteEvent);
 
 //get single event
 router.get("/:id", getSingleEvent);
