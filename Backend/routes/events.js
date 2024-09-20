@@ -8,10 +8,10 @@ const router = express.Router()
 
 
 //create new event
-router.post("/", verifyAdmin, createEvent);
+router.post("/", createEvent);
 
 //update event
-router.put("/:id", verifyAdmin, updateEvent);
+router.put("/:id", updateEvent);
 
 //delete event
 router.delete("/:id", deleteEvent);

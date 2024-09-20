@@ -8,8 +8,8 @@ import { createBooking,
 
 const router = express.Router();
 
-router.post("/",verifyUser,createBooking);
-router.get("/:id",verifyUser,getBooking);
+router.post("/",createBooking);
+router.get("/:id",getBooking);
 router.get("/",getAllBooking);
 router.delete("/:id",deleteBooking);
 
