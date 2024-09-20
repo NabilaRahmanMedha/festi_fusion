@@ -27,9 +27,9 @@ const Routers = () => {
         <Route path='/thank-you' element={<ThankYou/>}/>
         <Route path='/events/search' element={<SearchResultList/>}/>
 
-        <Route path='/admin' element={<AdminLayout><AdminDashboard /></AdminLayout>} />
-        <Route path='/admin/users' element={<AdminLayout><UserManagement /></AdminLayout>} />
-        <Route path='/admin/events' element={<AdminLayout><EventManagement /></AdminLayout>} />
+        <Route path='/admin' element={<AdminDashboard />} />
+        <Route path='/admin/users' element={<UserManagement />} />
+        <Route path='/admin/events' element={<EventManagement />} />
     
     </Routes>
   );

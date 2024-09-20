@@ -48,6 +48,11 @@
     color: var(--secondary-color);
   }
   
+  .admin_header .user-name{
+    color:aliceblue;
+    font-weight: bold;
+  }
+
   .admin_header .mobile__menu {
     font-size: 1.3rem;
     color: var(--heading-color);

@@ -85,19 +85,20 @@ const AdminLayout = ({ children }) => {
                       </NavLink>
                     </li>
                   ))}
+                  
                 </ul>
               </div>
 
               {/* Logout Button */}
               <div className="nav__right d-flex align-items-center gap-4">
-                {user && user.role === 'admin' && (
+                
                   <>
                     <span className="user-name">{user.username}</span>
                     <Button className="btn primary__btn" onClick={logout}>
                       Logout
                     </Button>
                   </>
-                )}
+                
               </div>
 
               {/* Mobile Menu Icon */}
