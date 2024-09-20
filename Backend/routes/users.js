@@ -13,15 +13,15 @@ import {
 } from '../utils/verifyToken.js';
 
 //update user
-router.put("/:id", verifyUser,updateUser);
+router.put("/:id",updateUser);
 
 //delete user
-router.delete("/:id",verifyUser,deleteUser );
+router.delete("/:id",deleteUser );
 
 //get single user
-router.get("/:id", verifyUser , getSingleUser);
+router.get("/:id", getSingleUser);
 
 //getAll users
-router.get("/", verifyAdmin,getAllUser);
+router.get("/",getAllUser);
 
 export default router;
