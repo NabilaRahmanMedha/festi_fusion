@@ -15,6 +15,7 @@ export const createEvent = async(req, res)=>{
                 data:savedEvent,
             });
     } catch(err){
+        console.error(err);
         res
         .status(500)
         .json({
@@ -41,6 +42,7 @@ export const updateEvent = async (req , res) => {
             });
 
     } catch(err){
+        console.error(err);
         res.status(500)
             .json({
                 success:false, 
@@ -62,6 +64,7 @@ export const deleteEvent = async (req , res) => {
             });
 
     } catch(err){
+        console.error(err);
         res.status(500)
             .json({
                 success:false, 
@@ -86,6 +89,7 @@ export const getSingleEvent = async (req , res) => {
             });
 
     } catch(err){
+        console.error(err);
         res.status(404)
             .json({
                 success:false, 

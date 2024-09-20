@@ -27,5 +27,7 @@
     "mongodb": "^6.8.1",
     "mongoose": "^8.6.1"
   },
-  "description": ""
+  "devDependencies": {
+    "vercel": "^37.4.2"
+  }
 }
