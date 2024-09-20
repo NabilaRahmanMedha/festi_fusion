@@ -7,7 +7,7 @@ import "./event-card.css";
 
 const EventCard = ({event}) => {
 
-  const {id, title, city, photo, price, featured, reviews}= event;
+  const {_id, title, city, photo, price, featured, reviews}= event;
 
   const {totalRating,avgRating}= calculateAvgRating(reviews) ;
 
@@ -34,14 +34,14 @@ const EventCard = ({event}) => {
           )}
           </span>
         </div>
-        <h5 className="event__title"><Link to={`/events/${id}`}>{title}</Link> 
+        <h5 className="event__title"><Link to={`/events/${_id}`}>{title}</Link> 
         </h5>
         <div className="card__bottom d-flex align-items-center
         justify-content-between mt-3">
           <h5>${price}<span></span></h5>
 
           <button className="btn booking__btn">
-            <Link to={`/events/${id}`}>Book Now</Link>
+            <Link to={`/events/${_id}`}>Book Now</Link>
           </button>
         </div>
 

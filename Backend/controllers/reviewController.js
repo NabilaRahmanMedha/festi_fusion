@@ -5,7 +5,9 @@ export const createReview = async(req,res)=>{
     const eventId = req.params.eventId
     const newReview = new Review({...req.body})
     try {
+
         const savedReview = await newReview.save()
+        
         await Event.findByIdAndUpdate(eventId,{
             $push: {reviews: savedReview._id}
         })
@@ -16,6 +18,7 @@ export const createReview = async(req,res)=>{
         })
 
     } catch (error) {
+        cconsole.error(err);
         res.status(500).json({
             success:false,
             message: "failed to Submit",

@@ -7,6 +7,11 @@ import EventsDetails from '../pages/EventsDetails';
 import Register from '../pages/Register';
 import SearchResultList from '../pages/SearchResultList';
 import Login from '../pages/Login';
+import ThankYou from '../pages/ThankYou';
+import AdminDashboard from '../pages/AdminDashboard';
+import UserManagement from '../pages/UserManagement';
+import EventManagement from '../pages/EventManagement';
+import AdminLayout from '../components/AdminLayout/AdminLayout';
 
 
 
@@ -19,10 +24,15 @@ const Routers = () => {
         <Route path='/events/:id' element={<EventsDetails/>}/>
         <Route path='/login' element={<Login/>}/>
         <Route path='/register' element={<Register/>}/>
+        <Route path='/thank-you' element={<ThankYou/>}/>
         <Route path='/events/search' element={<SearchResultList/>}/>
 
+        <Route path='/admin' element={<AdminLayout><AdminDashboard /></AdminLayout>} />
+        <Route path='/admin/users' element={<AdminLayout><UserManagement /></AdminLayout>} />
+        <Route path='/admin/events' element={<AdminLayout><EventManagement /></AdminLayout>} />
+    
     </Routes>
-  )
+  );
 };
 
 export default Routers;

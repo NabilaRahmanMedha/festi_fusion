@@ -15,6 +15,7 @@ export const createUser = async(req, res)=>{
                 data:savedUser,
             });
     } catch(err){
+        console.error(err);
         res
             .status(500)
             .json({success:false, message:"failed to create. try again"})
@@ -38,6 +39,7 @@ export const updateUser = async (req , res) => {
             });
 
     } catch(err){
+        console.error(err);
         res.status(500)
             .json({
                 success:false, 
@@ -60,6 +62,7 @@ export const deleteUser = async (req , res) => {
             });
 
     } catch(err){
+        console.error(err);
         res.status(500)
             .json({
                 success:false, 
@@ -68,7 +71,7 @@ export const deleteUser = async (req , res) => {
     }
 };
 
-//getSingleTour User
+//getSingle User
 export const getSingleUser = async (req , res) => {
     const id = req.params.id
     try{
@@ -83,6 +86,7 @@ export const getSingleUser = async (req , res) => {
             });
 
     } catch(err){
+        console.error(err);
         res.status(404)
             .json({
                 success:false, 
@@ -103,6 +107,7 @@ export const getAllUser = async (req , res) => {
             data: users
         })
     } catch(err){
+        console.error(err);
         res.status(404)
             .json({
                 success:false, 

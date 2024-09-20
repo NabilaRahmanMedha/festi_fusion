@@ -2,25 +2,35 @@ import React,{useRef} from 'react';
 import './search-bar.css'
 import { Col, Form, FormGroup } from 'reactstrap';
 
+import { BASE_URL }  from "./../utils/config.js";
+import {useNavigate} from "react-router-dom";
+
 const SearchBar = () => {
 
     const locationRef =useRef('');
     const budgetRef =useRef(0);
     const maxGroupSizeRef =useRef(0);
+    const navigate = useNavigate();
 
-    const searchHandler = ()=>{
+    const searchHandler = async ()=>{
         const location= locationRef.current.value
         const budget= budgetRef.current.value
         const maxGroupSize= maxGroupSizeRef.current.value
 
-        if(location==='' || budget===''||maxGroupSize===''){
+        if(location===""|| budget===""||maxGroupSize===""){
             return alert("All fields are required!!");
         }
 
+        const res = await fetch (`${BASE_URL}events/search/getEventBySearch?city=${location}&budget=${budget}&maxGroupSize=${maxGroupSize}`);
+        
+        if(!res.ok){
+            alert("Something went wrong");
+        }
+
+        const result = await res.json();
+
+        navigate(`/events/search?city=${location}&budget=${budget}&maxGroupSize=${maxGroupSize}`,{state: result.data});
     };
-
-
-
 
   return <Col lg='12'>
     <div className="search__bar">
@@ -29,8 +39,8 @@ const SearchBar = () => {
                 <span><i class="ri-map-pin-line"></i></span>
                 <div>
                     <h6>Location</h6>
-                    <input type="text" placeholder="Event location?" ref=
-                    {locationRef}/>
+                    <input type="text" placeholder="Event location?" 
+                    ref={locationRef}/>
                 </div>
             </FormGroup>
 

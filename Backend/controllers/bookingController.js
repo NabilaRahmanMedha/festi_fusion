@@ -1,4 +1,8 @@
+
 import Booking from "../models/Booking.js";
+
+//create booking
+
 export const createBooking = async(req,res)=>{
     const newBooking = new Booking(req.body)
     try {
@@ -9,12 +13,15 @@ export const createBooking = async(req,res)=>{
             data:savedBooking
         })
     } catch (err) {
+        console.error(err);
         res.status(500).json({
             success:false,
-            message:'Failed to book event',
+            message:'Server Error',
         })
     }
 };
+
+//get single booking
 
 export const getBooking = async(req,res)=>{
     const id = req.params.id
@@ -26,12 +33,15 @@ export const getBooking = async(req,res)=>{
             data:book
         })
     } catch (error) {
+        console.error(error);
         res.status(404).json({
             success:false,
             message:'not found',
         })
     }
 };
+
+//get all booking 
 
 export const getAllBooking = async(req,res)=>{
     
@@ -43,6 +53,7 @@ export const getAllBooking = async(req,res)=>{
             data:books
         })
     } catch (error) {
+        console.error(error);
         res.status(500).json({
             success:false,
             message:'Internal Server Error',
