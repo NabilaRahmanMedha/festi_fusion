@@ -47,7 +47,7 @@ const UserManagement = () => {
                   </p>
                   {/* Delete Button */}
                   <button 
-                    className="btn btn-danger mt-3"
+                    className="btn primary__btn"
                     onClick={() => deleteUser(user._id)}
                   >
                     Delete User
