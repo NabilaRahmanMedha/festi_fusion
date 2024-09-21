@@ -3,7 +3,7 @@
 }
 
 .user-card {
-    background-color: rgb(43, 34, 37);
+    background-color: rgb(22, 18, 19);
     border-radius: 8px;
     padding: 15px;
     transition: box-shadow 0.3s;
@@ -20,7 +20,7 @@
   }
   
   .user-detail {
-    color: var(--secondary-color);
+    color: #c298b0;
     font-size: 14px;
     margin-top: 5px;
   }

@@ -1,82 +1,99 @@
-import React from 'react';
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
-
+import React from "react";
+import {
+  LineChart,
+  Rectangle,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  Legend,
+  BarChart,
+  Bar,
+  ResponsiveContainer,
+} from "recharts";
 
 const AdminDashboard = () => {
-
   const data = [
     {
-      name: 'Page A',
-      uv: 4000,
+      name: "Mehndi Night",
+      
       pv: 2400,
-      amt: 2400,
+      
     },
     {
-      name: 'Page B',
-      uv: 3000,
+      name: "Haldi Night",
+      
       pv: 1398,
-      amt: 2210,
+      
     },
     {
-      name: 'Page C',
-      uv: 2000,
+      name: "Conference",
+      
       pv: 9800,
-      amt: 2290,
+      
     },
     {
-      name: 'Page D',
-      uv: 2780,
+      name: "Birthday Celebration",
+      
       pv: 3908,
-      amt: 2000,
+      
     },
     {
-      name: 'Page E',
-      uv: 1890,
+      name: "Concert",
+      
       pv: 4800,
-      amt: 2181,
+      
     },
     {
-      name: 'Page F',
-      uv: 2390,
+      name: "Destination Wedding",
+      
       pv: 3800,
-      amt: 2500,
+      
     },
     {
-      name: 'Page G',
-      uv: 3490,
+      name: "Akht Ceremony",
+      
       pv: 4300,
-      amt: 2100,
+      
     },
   ];
 
   return (
-    <>
-    <div>
-      ajsdhciu
-    
-    <ResponsiveContainer width="100%" height="100%">
-        <LineChart
-          width={500}
-          height={300}
-          data={data}
-          margin={{
-            top: 5,
-            right: 30,
-            left: 20,
-            bottom: 5,
-          }}
-        >
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="name" />
-          <YAxis />
-          <Tooltip />
-          <Legend />
-          <Line type="monotone" dataKey="pv" stroke="#8884d8" activeDot={{ r: 8 }} />
-          <Line type="monotone" dataKey="uv" stroke="#82ca9d" />
-        </LineChart>
-      </ResponsiveContainer>
+    <section>
+      <div
+        className="container"
+        style={{
+          width: "100%",
+          height: 600,
+        }}
+      >
+        {" "}
+        <ResponsiveContainer width="100%" height="100%">
+          <BarChart
+            width={500}
+            height={300}
+            data={data}
+            margin={{
+              top: 5,
+              right: 30,
+              left: 20,
+              bottom: 5,
+            }}
+          >
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="name" />
+            <YAxis />
+            <Tooltip />
+            <Legend />
+            <Bar
+              dataKey="pv"
+              fill="#ba8a94"
+              activeBar={<Rectangle fill="pink" stroke="blue" />}
+            />
+          </BarChart>
+        </ResponsiveContainer>
       </div>
-      </>
+    </section>
   );
 };
 

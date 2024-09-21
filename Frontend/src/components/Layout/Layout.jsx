@@ -37,14 +37,7 @@ const Layout = () => {
           <Footer />
 
           {/* Display Logout Button if user is logged in */}
-          {user && (
-            <div className="logout-container" style={{ textAlign: 'right', padding: '10px' }}>
-              <h5>Welcome, {user.username}</h5>
-              <Button className="btn primary__btn" onClick={logout}>
-                Logout
-              </Button>
-            </div>
-          )}
+          
         </>
       )}
     </>
