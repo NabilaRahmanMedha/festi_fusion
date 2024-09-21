@@ -1,0 +1,8 @@
+.testimonial {
+    color: white; /* Apply white color to text */
+}
+
+.testimonial h6,
+.testimonial p {
+    color: rgb(185, 160, 160); /* Specifically target headings and paragraphs */
+}
